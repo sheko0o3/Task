@@ -1,0 +1,14 @@
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\bin\Debug\net8.0\QueueApp.exe
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\bin\Debug\net8.0\QueueApp.deps.json
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\bin\Debug\net8.0\QueueApp.runtimeconfig.json
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\bin\Debug\net8.0\QueueApp.dll
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\bin\Debug\net8.0\QueueApp.pdb
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.AssemblyInfoInputs.cache
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.AssemblyInfo.cs
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.csproj.CoreCompileInputs.cache
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.dll
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\refint\QueueApp.dll
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.pdb
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.genruntimeconfig.cache
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\ref\QueueApp.dll
