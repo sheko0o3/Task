@@ -12,3 +12,4 @@ D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\refint\QueueApp.dll
 D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.pdb
 D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.genruntimeconfig.cache
 D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\ref\QueueApp.dll
+D:\C#\CLI\C#Projects-Learning\Task\QueueApp\obj\Debug\net8.0\QueueApp.sourcelink.json

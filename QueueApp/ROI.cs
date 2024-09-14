@@ -9,17 +9,21 @@ namespace QueueApp
     public class Roi
     {
         public int PeopleCount { get; set;}
-        public double? MaxDuelTime { get;}
-        public string? RoiSysID {get;}
-        public string? UseCaseID { get; set; }       
+        public double MaxDuelTime { get;}
+        public string RoiSysID {get;}
+        public string UseCaseID { get; set; }
+
+             
     
-        public Roi(int peoplecount , [Optional]double maxdueltime, [Optional]string usecaseID)
+        public Roi(int peoplecount , [Optional]double maxdueltime, string usecaseID, string ID)
         {
             
             PeopleCount = peoplecount;
             MaxDuelTime = maxdueltime;
-            RoiSysID = Guid.NewGuid().ToString();
+            // RoiSysID = Guid.NewGuid().ToString();
+            RoiSysID = ID;
             UseCaseID = usecaseID;
+            
 
         }
 
