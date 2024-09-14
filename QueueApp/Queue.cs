@@ -14,7 +14,7 @@ namespace QueueApp
 
         public static List<Roi> RelatedRoiObjs { get; set; }
 
-        public static string QueueSysID { get; set; }
+        public string QueueSysID { get;}
         public string UseCaseID { get; set; }
 
         public static int OverCapacityThreshold { get; set; }
@@ -22,12 +22,13 @@ namespace QueueApp
 
 
 
-        public Queue(int capacity, string usecaseID)
+        public Queue(int capacity, string usecaseID, string queueID)
         {
             OverCapacityThreshold = capacity;
             RelatedRoiObjs = new List<Roi>();
             RelatedRoiSysIDs = new List<string>();
-            QueueSysID = Guid.NewGuid().ToString();
+            // QueueSysID = Guid.NewGuid().ToString();
+            QueueSysID = queueID;
             UseCaseID = usecaseID;
 
         }
@@ -47,19 +48,19 @@ namespace QueueApp
 
         static string GetQueue(string ID)
         {
-            string queueID = null;
+            string queueUseCaseID = string.Empty;
             foreach (var obj in RelatedRoiObjs)
             {
                 if (obj.RoiSysID == ID)
                 {
 
-                    queueID = obj.UseCaseID;
-                    System.Console.WriteLine($"This Row in Queue: {queueID}");
+                    queueUseCaseID = obj.UseCaseID;
+                    System.Console.WriteLine($"This Row in Queue: {queueUseCaseID}");
 
                 }
 
             }
-            return queueID;
+            return queueUseCaseID;
 
         }
 
@@ -106,20 +107,20 @@ namespace QueueApp
 
             int TotalCapacity = 0;
 
-            string queueID = GetQueue(ID: id);
-            ListOfQueuesCooldown.Add(queueID);
+            string queueUseCaseID = GetQueue(ID: id);
+            ListOfQueuesCooldown.Add(id);
 
             var time = DateTime.Now;
 
 
-            while (HelperMethods.CheckCooldown(AlarmTime: time, cooldowntime: 60) && ListOfQueuesCooldown.Contains(queueID))
+            while (HelperMethods.CheckCooldown(AlarmTime: time, cooldowntime: 60) && ListOfQueuesCooldown.Contains(id))
             {
                 System.Console.WriteLine("do nothing");
             }
 
             foreach (var obj in RelatedRoiObjs)
             {
-                if (obj.UseCaseID == queueID)
+                if (obj.UseCaseID == queueUseCaseID)
                 {
                     TotalCapacity += obj.PeopleCount;
                 }
@@ -132,7 +133,7 @@ namespace QueueApp
             }
             else
             {
-                // ListOfQueuesCooldown.Add(queueID);
+                // ListOfQueuesCooldown.Add(queueUseCaseID);
                 System.Console.WriteLine(ListOfQueuesCooldown.Count);
                 return true;
             }

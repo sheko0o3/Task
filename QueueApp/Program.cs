@@ -10,11 +10,11 @@ class Program
     {   
         System.Console.WriteLine("***************");
 
-        Queue queueOne = new Queue(capacity:20, usecaseID:"A");
-        Queue queueTwo = new Queue(capacity:30,usecaseID:"C");
+        Queue queueOne = new Queue(capacity:20, usecaseID:"A", queueID:"OneA");
+        Queue queueTwo = new Queue(capacity:30,usecaseID:"C", queueID:"TwoA");
         
         Roi roi = new Roi(peoplecount:2, ID:"1", usecaseID:"A");
-        Roi roiTwo = new Roi(peoplecount:10, ID:"2", usecaseID:"B");
+        Roi roiTwo = new Roi(peoplecount:10, ID:"2", usecaseID:"C");
         Roi roiThree = new Roi(peoplecount:15, ID:"3", usecaseID:"A");
     
         queueOne.AddRoiObj(roi);
