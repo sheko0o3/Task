@@ -93,30 +93,12 @@ namespace QueueApp
 
         //************************************************************************//
 
-        public static bool OverCapacityTest(string id)
+        public static bool OverCapacityTest(string id, int cooldowntime)
         {
-            List<string> ListOfQueuesCooldown = new List<string>();
-            System.Console.WriteLine(ListOfQueuesCooldown.Count);
-            
-            foreach (var item in ListOfQueuesCooldown)
-            {
-                
-                System.Console.WriteLine(item);
-            }
-
 
             int TotalCapacity = 0;
 
             string queueUseCaseID = GetQueue(ID: id);
-            ListOfQueuesCooldown.Add(id);
-
-            var time = DateTime.Now;
-
-
-            while (HelperMethods.CheckCooldown(AlarmTime: time, cooldowntime: 60) && ListOfQueuesCooldown.Contains(id))
-            {
-                System.Console.WriteLine("do nothing");
-            }
 
             foreach (var obj in RelatedRoiObjs)
             {
@@ -133,8 +115,6 @@ namespace QueueApp
             }
             else
             {
-                // ListOfQueuesCooldown.Add(queueUseCaseID);
-                System.Console.WriteLine(ListOfQueuesCooldown.Count);
                 return true;
             }
 

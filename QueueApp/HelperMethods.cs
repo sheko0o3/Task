@@ -8,10 +8,13 @@ namespace QueueApp
 {
     public class HelperMethods
     {
-        public static bool CheckCooldown(DateTime AlarmTime, int cooldowntime)
+        public static bool CheckCooldown(Dictionary<string, DateTime> dict, int cooldowntime, string ID)
         {
+            dict.TryGetValue(ID , out DateTime AlarmTime);
+            
             var currentTime = DateTime.Now;
-            while (currentTime < AlarmTime.AddSeconds(cooldowntime))
+
+            if (AlarmTime < currentTime.AddSeconds(cooldowntime))
             {
                 return true;
             }
