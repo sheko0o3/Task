@@ -68,12 +68,12 @@ namespace QueueApp
         public static bool OverCapacity(string id)
         {
             int TotalCapacity = 0;
-            string queueID = GetQueue(ID: id);
+            string queueUseCaseID = GetQueue(ID: id);
 
 
             foreach (var obj in RelatedRoiObjs)
             {
-                if (obj.UseCaseID == queueID)
+                if (obj.UseCaseID == queueUseCaseID)
                 {
                     TotalCapacity += obj.PeopleCount;
                 }
