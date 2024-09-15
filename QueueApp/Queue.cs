@@ -10,9 +10,9 @@ namespace QueueApp
 {
     public class Queue
     {
-        public List<string> RelatedRoiSysIDs { get; }
+        public List<string> RelatedRoiSysIDs { get; } = new();
 
-        public static List<Roi> RelatedRoiObjs { get; set; }
+        public static List<Roi> RelatedRoiObjs { get;} = new();
 
         public string QueueSysID { get;}
         public string UseCaseID { get; set; }
@@ -25,8 +25,8 @@ namespace QueueApp
         public Queue(int capacity, string usecaseID, string queueID)
         {
             OverCapacityThreshold = capacity;
-            RelatedRoiObjs = new List<Roi>();
-            RelatedRoiSysIDs = new List<string>();
+            // RelatedRoiObjs = new List<Roi>();
+            // RelatedRoiSysIDs = new List<string>();
             // QueueSysID = Guid.NewGuid().ToString();
             QueueSysID = queueID;
             UseCaseID = usecaseID;
