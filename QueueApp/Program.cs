@@ -1,4 +1,5 @@
 ﻿
+using System.Diagnostics;
 using Microsoft.VisualBasic;
 
 
@@ -14,7 +15,7 @@ class Program
         Queue queueTwo = new Queue(capacity:30,usecaseID:"C", queueID:"TwoA");
         
         Roi roi = new Roi(peoplecount:20, ID:"1", usecaseID:"A");
-        Roi roiTwo = new Roi(peoplecount:10, ID:"2", usecaseID:"C");
+        Roi roiTwo = new Roi(peoplecount:60, ID:"2", usecaseID:"C");
         Roi roiThree = new Roi(peoplecount:15, ID:"3", usecaseID:"A");
     
         queueOne.AddRoiObj(roi);
@@ -34,37 +35,49 @@ class Program
 
         List<string> list = new List<string>();
         list = ["1", "2", "3", "1", "3"];
-
-        foreach (var item in list)
-        {
-             
-            if (DictOfQueuesCooldown.ContainsKey(item) && HelperMethods.CheckCooldown(DictOfQueuesCooldown, 60, item))
+        
+        
+        // Stopwatch s = new Stopwatch();
+        // s.Start();
+        // while(s.Elapsed < TimeSpan.FromSeconds(70))
+        // {
+            foreach (var item in list)
             {
-                System.Console.WriteLine("do nothing");
-            }
-            else
-            {
-                if(Queue.OverCapacityTest(id:$"{item}", cooldowntime:60))
+                
+                if (DictOfQueuesCooldown.ContainsKey(item) && HelperMethods.CheckCooldown(DictOfQueuesCooldown, 60, item))
                 {
-                    
-                    var time = DateTime.Now;
-                    DictOfQueuesCooldown.Add(item, time);
-                    
-                    System.Console.WriteLine($"Fire Alarm");    
+                    System.Console.WriteLine("do nothing");
                 }
                 else
                 {
-                    System.Console.WriteLine("No Alarm");
-                }
+                    if(Queue.OverCapacityTest(id:$"{item}", cooldowntime:60))
+                    {
+                        
+                        var time = DateTime.Now;
+                        DictOfQueuesCooldown.Add(item, time);
+                        
+                        System.Console.WriteLine($"Fire Alarm");    
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("No Alarm");
+                    }
+                    
+                }       
                 
-            }       
+            }
+        // }
+
+        // s.Stop();  
             
-        }
+            
+    
+        
         // System.Console.WriteLine(queueOne.RelatedRoiSysIDs.Count);
         // System.Console.WriteLine(Queue.RelatedRoiObjs.Count);
         // System.Console.WriteLine(queueTwo.RelatedRoiSysIDs.Count);
         System.Console.WriteLine("************");
-        System.Console.Read();
+        
     
 
     }
