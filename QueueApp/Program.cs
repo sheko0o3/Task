@@ -8,78 +8,30 @@ namespace QueueApp;
 class Program
 {
     static void Main(string[] args)
-    {   
-        System.Console.WriteLine("***************");
+    {  
+        Dictionary<string, List<string>> PreDefienedQueues = new()
+        {
+            {"A", new List<string>{"A1","A2"}},
+            {"B", new List<string>{"B1"}}
+        };
 
-        Queue queueOne = new Queue(capacity:20, usecaseID:"A", queueID:"OneA");
-        Queue queueTwo = new Queue(capacity:30,usecaseID:"C", queueID:"TwoA");
-        
-        Roi roi = new Roi(peoplecount:20, ID:"1", usecaseID:"A");
-        Roi roiTwo = new Roi(peoplecount:60, ID:"2", usecaseID:"C");
-        Roi roiThree = new Roi(peoplecount:15, ID:"3", usecaseID:"A");
-    
-        queueOne.AddRoiObj(roi);
-        queueOne.AddRoiSysIDs(roi);
-
-        queueOne.AddRoiObj(roiTwo);
-        queueOne.AddRoiSysIDs(roiTwo);
-
-        queueTwo.AddRoiObj(roiThree);
-        queueTwo.AddRoiSysIDs(roiThree);
-
-        
-        
        
-        
-        Dictionary<string, DateTime> DictOfQueuesCooldown = new Dictionary<string, DateTime>();
+        UseCase caseOne = new UseCase(usecaseID:"1");
+        UseCase caseTwo = new UseCase(usecaseID:"2");
 
-        List<string> list = new List<string>();
-        list = ["1", "2", "3", "1", "3"];
-        
-        
-        // Stopwatch s = new Stopwatch();
-        // s.Start();
-        // while(s.Elapsed < TimeSpan.FromSeconds(70))
-        // {
-            foreach (var item in list)
-            {
-                
-                if (DictOfQueuesCooldown.ContainsKey(item) && HelperMethods.CheckCooldown(DictOfQueuesCooldown, 60, item))
-                {
-                    System.Console.WriteLine("do nothing");
-                }
-                else
-                {
-                    if(Queue.OverCapacityTest(id:$"{item}", cooldowntime:60))
-                    {
-                        
-                        var time = DateTime.Now;
-                        DictOfQueuesCooldown.Add(item, time);
-                        
-                        System.Console.WriteLine($"Fire Alarm");    
-                    }
-                    else
-                    {
-                        System.Console.WriteLine("No Alarm");
-                    }
-                    
-                }       
-                
-            }
-        // }
 
-        // s.Stop();  
-            
-            
-    
-        
-        // System.Console.WriteLine(queueOne.RelatedRoiSysIDs.Count);
-        // System.Console.WriteLine(Queue.RelatedRoiObjs.Count);
-        // System.Console.WriteLine(queueTwo.RelatedRoiSysIDs.Count);
-        System.Console.WriteLine("************");
-        
-    
 
+        Queue queueOne = new Queue(capacity:20,usecaseID:"1",queueID:"A");
+        Queue queueTwo = new Queue(capacity:25, usecaseID:"1", queueID:"B");
+
+        Queue queueThree = new Queue(capacity:30, usecaseID:"2", queueID:"D");
+
+        Roi roiOne = new Roi(peoplecount:10, usecaseID:"1", ID:"A1");
+        Roi roiTwo = new Roi(peoplecount:15, usecaseID:"1", ID:"A2");
+
+        Roi roiThree = new Roi(peoplecount:12, usecaseID:"1", ID:"B1");
+
+        
     }
 }
 

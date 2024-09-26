@@ -10,9 +10,6 @@ namespace QueueApp
 {
     public class Queue
     {
-        public List<string> RelatedRoiSysIDs { get; } = new();
-
-        public static List<Roi> RelatedRoiObjs { get;} = new();
 
         public string QueueSysID { get;}
         public string UseCaseID { get; set; }
@@ -33,92 +30,39 @@ namespace QueueApp
 
         }
 
-        public void AddRoiSysIDs(Roi relatedRoi)
-        {
-            RelatedRoiSysIDs.Add(relatedRoi.RoiSysID);
-            return;
-        }
+        string GetQueueID(string id, Dictionary<string, List<string>> Dict)
+        {   string queueID = string.Empty;
 
-        public void AddRoiObj(Roi obj)
-        {
-            RelatedRoiObjs.Add(obj);
-            return;
-        }
-
-
-        static string GetQueue(string ID)
-        {
-            string queueUseCaseID = string.Empty;
-            foreach (var obj in RelatedRoiObjs)
+            foreach( var item in Dict)
             {
-                if (obj.RoiSysID == ID)
+                if (item.Value.Contains(id))
                 {
-
-                    queueUseCaseID = obj.UseCaseID;
-                    System.Console.WriteLine($"This Row in Queue: {queueUseCaseID}");
-
+                    queueID = item.Key;
+                    break;
                 }
-
-            }
-            return queueUseCaseID;
-
-        }
-
-
-        public static bool OverCapacity(string id)
-        {
-            int TotalCapacity = 0;
-            string queueUseCaseID = GetQueue(ID: id);
-
-
-            foreach (var obj in RelatedRoiObjs)
-            {
-                if (obj.UseCaseID == queueUseCaseID)
+                else
                 {
-                    TotalCapacity += obj.PeopleCount;
+                    System.Console.WriteLine("Not Found");
                 }
             }
-            System.Console.WriteLine(TotalCapacity);
 
-            if (TotalCapacity < OverCapacityThreshold)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-
+            return queueID;
         }
+
+       
+
+        
+        
+
+        
+
+
+       
 
         //************************************************************************//
 
-        public static bool OverCapacityTest(string id, int cooldowntime)
-        {
-
-            int TotalCapacity = 0;
-
-            string queueUseCaseID = GetQueue(ID: id);
-
-            foreach (var obj in RelatedRoiObjs)
-            {
-                if (obj.UseCaseID == queueUseCaseID)
-                {
-                    TotalCapacity += obj.PeopleCount;
-                }
-            }
-            System.Console.WriteLine(TotalCapacity);
-
-            if (TotalCapacity < OverCapacityThreshold)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-
-        }
+        
+        
 
     }
 }
