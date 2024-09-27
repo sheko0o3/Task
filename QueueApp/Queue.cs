@@ -22,8 +22,6 @@ namespace QueueApp
         public Queue(int capacity, string usecaseID, string queueID)
         {
             OverCapacityThreshold = capacity;
-            // RelatedRoiObjs = new List<Roi>();
-            // RelatedRoiSysIDs = new List<string>();
             // QueueSysID = Guid.NewGuid().ToString();
             QueueSysID = queueID;
             UseCaseID = usecaseID;
