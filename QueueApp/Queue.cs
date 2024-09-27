@@ -10,7 +10,7 @@ namespace QueueApp
 {
     public class Queue
     {
-
+        public List<string>? RelatedRois {get; set;}
         public string QueueSysID { get;}
         public string UseCaseID { get; set; }
 
@@ -27,29 +27,29 @@ namespace QueueApp
             // QueueSysID = Guid.NewGuid().ToString();
             QueueSysID = queueID;
             UseCaseID = usecaseID;
+            RelatedRois = new();
 
         }
 
-        string GetQueueID(string id, Dictionary<string, List<string>> Dict)
-        {   string queueID = string.Empty;
-
-            foreach( var item in Dict)
+        public void AddRois(List<Roi>roi)
+        {
+            foreach(var item in roi)
             {
-                if (item.Value.Contains(id))
-                {
-                    queueID = item.Key;
-                    break;
-                }
-                else
-                {
-                    System.Console.WriteLine("Not Found");
-                }
+                RelatedRois.Add(item.RoiSysID);
             }
-
-            return queueID;
+            return;
         }
 
-       
+        public void UpdateQueueRois(List<Roi>Rois)
+        {
+            RelatedRois.Clear();
+            
+            foreach(var item in Rois)
+            {
+                RelatedRois.Add(item.RoiSysID);
+            }
+            return;
+        }
 
         
         
