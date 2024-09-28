@@ -10,7 +10,7 @@ namespace QueueApp
 {
     public class Queue
     {
-        public List<string>? RelatedRois {get; set;}
+        public List<string> RelatedRois {get; set;}
         public string QueueSysID { get;}
         public string UseCaseID { get; set; }
 
@@ -49,13 +49,25 @@ namespace QueueApp
             return;
         }
 
-        
-        
+        public static string GetQueueID(string RoiID)
+        {
+            string queueID = string.Empty;
+            foreach(var item in UseCase.queuesCreated)
+            {
+                if (item.RelatedRois.Contains(RoiID))
+                {
+                    System.Console.WriteLine("Found");
+                    queueID = item.QueueSysID;
+                    break;
+                }
+                else
+                {
+                    System.Console.WriteLine("Not Found");
+                }
+            }
+            return queueID;
+        }
 
-        
-
-
-       
 
         //************************************************************************//
 

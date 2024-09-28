@@ -28,47 +28,58 @@ class Program
 
         Roi roiFive = new Roi(peoplecount:10, usecaseID:"1", ID:"B5");
 
+        UseCase.addQueues(new(){queueOne,queueTwo});
+        
+
         queueOne.AddRois(new(){roiOne,roiTwo});
 
         queueTwo.AddRois(new(){roiThree});
 
-        foreach(var item in queueOne.RelatedRois)
-        {
-            System.Console.WriteLine(item);
-        }
-        System.Console.WriteLine("*********");
-        foreach(var item in queueTwo.RelatedRois)
-        {
-            System.Console.WriteLine(item);
-        }
+        // foreach(var item in queueOne.RelatedRois)
+        // {
+        //     System.Console.WriteLine(item);
+        // }
+        // System.Console.WriteLine("*********");
+        // foreach(var item in queueTwo.RelatedRois)
+        // {
+        //     System.Console.WriteLine(item);
+        // }
 
-        queueOne.AddRois(new(){roiFour});
-        queueTwo.UpdateQueueRois(new(){roiFive});
+        // queueOne.AddRois(new(){roiFour});
+        // queueTwo.UpdateQueueRois(new(){roiFive});
         
 
-        System.Console.WriteLine("/////////new/////");
-        foreach(var item in queueOne.RelatedRois)
-        {
-            System.Console.WriteLine(item);
-        }
-        System.Console.WriteLine("*********");
-        foreach(var item in queueTwo.RelatedRois)
-        {
-            System.Console.WriteLine(item);
-        }
+        // System.Console.WriteLine("/////////new/////");
+        // foreach(var item in queueOne.RelatedRois)
+        // {
+        //     System.Console.WriteLine(item);
+        // }
+        // System.Console.WriteLine("*********");
+        // foreach(var item in queueTwo.RelatedRois)
+        // {
+        //     System.Console.WriteLine(item);
+        // }
 
-        queueOne.UpdateQueueRois(new(){roiOne,roiTwo,roiThree});
+        // // queueOne.UpdateQueueRois(new(){roiOne,roiTwo,roiThree});
 
-        System.Console.WriteLine("/////////new new/////");
-        foreach(var item in queueOne.RelatedRois)
-        {
-            System.Console.WriteLine(item);
-        }
-        System.Console.WriteLine("*********");
-        foreach(var item in queueTwo.RelatedRois)
-        {
-            System.Console.WriteLine(item);
-        }
+        // System.Console.WriteLine("/////////new new/////");
+        // foreach(var item in queueOne.RelatedRois)
+        // {
+        //     System.Console.WriteLine(item);
+        // }
+        // System.Console.WriteLine("*********");
+        // foreach(var item in queueTwo.RelatedRois)
+        // {
+        //     System.Console.WriteLine(item);
+        // }
+
+        System.Console.WriteLine("*-*-*--*-*---*");
+
+        var que = Queue.GetQueueID("B3");
+
+        System.Console.WriteLine(que);
+
+        
 
 
 

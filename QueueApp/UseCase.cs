@@ -8,6 +8,7 @@ namespace QueueApp
 {
     public class UseCase
     {
+        public static List<Queue> queuesCreated {get; set;}
         public string UseCaseSysID { get;}
         public int DebounceTime { get; }
         public bool SendCoolDownTime { get;}
@@ -16,6 +17,16 @@ namespace QueueApp
         {
             UseCaseSysID = usecaseID;
             DebounceTime = debounceTime;
+            queuesCreated = new();    
+    
+        }
+
+        public static void addQueues(List<Queue> queues)
+        {   
+            foreach(var item in queues)
+            {
+                queuesCreated.Add(item);
+            }
         }
 
     }
