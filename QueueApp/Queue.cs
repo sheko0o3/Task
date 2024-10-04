@@ -11,6 +11,7 @@ namespace QueueApp
     public class Queue
     {
         public List<string> RelatedRois {get; set;}
+        public List<Roi> RoisCreated {get;}
         public string QueueSysID { get;}
         public string UseCaseID { get; set; }
 
@@ -26,6 +27,7 @@ namespace QueueApp
             QueueSysID = queueID;
             UseCaseID = usecaseID;
             RelatedRois = new();
+            RoisCreated = new();
 
         }
 
@@ -33,6 +35,7 @@ namespace QueueApp
         {
             foreach(var item in roi)
             {
+                RoisCreated.Add(item);
                 RelatedRois.Add(item.RoiSysID);
             }
             return;
@@ -44,28 +47,42 @@ namespace QueueApp
             
             foreach(var item in Rois)
             {
+                RoisCreated.Add(item);
                 RelatedRois.Add(item.RoiSysID);
             }
             return;
         }
 
-        public static string GetQueueID(string RoiID)
+        static string GetQueueID(string RoiID)
         {
             string queueID = string.Empty;
             foreach(var item in UseCase.queuesCreated)
             {
                 if (item.RelatedRois.Contains(RoiID))
                 {
-                    System.Console.WriteLine("Found");
                     queueID = item.QueueSysID;
+                    System.Console.WriteLine($"Found, {queueID}");
                     break;
                 }
-                else
-                {
-                    System.Console.WriteLine("Not Found");
-                }
+                
             }
             return queueID;
+        }
+
+        public static void OverCapacityTest(Roi roi)
+        {
+            var queueID = GetQueueID(roi.RoiSysID);
+            int totalcapacity = 0;
+            foreach(var item in UseCase.queuesCreated.Where(p => p.QueueSysID == queueID))
+            {
+                foreach(var obj in item.RoisCreated)
+                {
+                    totalcapacity += obj.PeopleCount;
+                }
+            }
+            System.Console.WriteLine($"QueueID : {queueID},, TotalCapacity: {totalcapacity}");
+            
+            
         }
 
 

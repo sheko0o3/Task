@@ -35,49 +35,16 @@ class Program
 
         queueTwo.AddRois(new(){roiThree});
 
-        // foreach(var item in queueOne.RelatedRois)
-        // {
-        //     System.Console.WriteLine(item);
-        // }
-        // System.Console.WriteLine("*********");
-        // foreach(var item in queueTwo.RelatedRois)
-        // {
-        //     System.Console.WriteLine(item);
-        // }
 
-        // queueOne.AddRois(new(){roiFour});
-        // queueTwo.UpdateQueueRois(new(){roiFive});
+        
+        System.Console.WriteLine("*-*-*--*-*---*");
+        Queue.OverCapacityTest(roiOne);
+
         
 
-        // System.Console.WriteLine("/////////new/////");
-        // foreach(var item in queueOne.RelatedRois)
-        // {
-        //     System.Console.WriteLine(item);
-        // }
-        // System.Console.WriteLine("*********");
-        // foreach(var item in queueTwo.RelatedRois)
-        // {
-        //     System.Console.WriteLine(item);
-        // }
+        
 
-        // // queueOne.UpdateQueueRois(new(){roiOne,roiTwo,roiThree});
-
-        // System.Console.WriteLine("/////////new new/////");
-        // foreach(var item in queueOne.RelatedRois)
-        // {
-        //     System.Console.WriteLine(item);
-        // }
-        // System.Console.WriteLine("*********");
-        // foreach(var item in queueTwo.RelatedRois)
-        // {
-        //     System.Console.WriteLine(item);
-        // }
-
-        System.Console.WriteLine("*-*-*--*-*---*");
-
-        var que = Queue.GetQueueID("B3");
-
-        System.Console.WriteLine(que);
+        
 
         
 
