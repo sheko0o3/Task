@@ -10,7 +10,7 @@ namespace QueueApp
 {
     public class Queue
     {
-        public List<string> RelatedRois {get; set;}
+        public List<string> RelatedRois {get;}
         public List<Roi> RoisCreated {get;}
         public string QueueSysID { get;}
         public string UseCaseID { get; set; }
@@ -85,16 +85,10 @@ namespace QueueApp
                     
                 }
             }
-            //System.Console.WriteLine($"QueueID : {queueID},, TotalPeople: {TotalPeople}");
             
             
-        }
-
-
-        //************************************************************************//
-
-        
-        
+            
+        }   
 
     }
 }

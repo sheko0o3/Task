@@ -28,7 +28,7 @@ class Program
 
         Roi roiFive = new Roi(peoplecount:10, usecaseID:"1", ID:"B5");
 
-        UseCase.addQueues(new(){queueOne,queueTwo});
+        UseCase.AddQueues(new(){queueOne,queueTwo});
         
 
         queueOne.AddRois(new(){roiOne,roiTwo});
