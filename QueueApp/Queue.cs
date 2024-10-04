@@ -15,7 +15,7 @@ namespace QueueApp
         public string QueueSysID { get;}
         public string UseCaseID { get; set; }
 
-        public static int OverCapacityThreshold { get; set; }
+        public int OverCapacityThreshold { get; set; }
         public double DuelTimeThreshold { get; set; }
 
 
@@ -61,7 +61,7 @@ namespace QueueApp
                 if (item.RelatedRois.Contains(RoiID))
                 {
                     queueID = item.QueueSysID;
-                    System.Console.WriteLine($"Found, {queueID}");
+        
                     break;
                 }
                 
@@ -72,15 +72,20 @@ namespace QueueApp
         public static void OverCapacityTest(Roi roi)
         {
             var queueID = GetQueueID(roi.RoiSysID);
-            int totalcapacity = 0;
+            int TotalPeople = 0;
             foreach(var item in UseCase.queuesCreated.Where(p => p.QueueSysID == queueID))
             {
                 foreach(var obj in item.RoisCreated)
                 {
-                    totalcapacity += obj.PeopleCount;
+                    TotalPeople += obj.PeopleCount;
+                }
+                if(TotalPeople > item.OverCapacityThreshold)
+                {
+                    Console.WriteLine($"Fire Alarm, QueueID:{queueID}, UseCaseID:{item.UseCaseID}, TotalPeople:{TotalPeople}, AllowedCapacity:{item.OverCapacityThreshold}");
+                    
                 }
             }
-            System.Console.WriteLine($"QueueID : {queueID},, TotalCapacity: {totalcapacity}");
+            //System.Console.WriteLine($"QueueID : {queueID},, TotalPeople: {TotalPeople}");
             
             
         }
