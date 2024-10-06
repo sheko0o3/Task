@@ -53,40 +53,41 @@ namespace QueueApp
             return;
         }
 
-        static string GetQueueID(string RoiID)
+        public static List<Queue> GetQueueID(string RoiID)
         {
-            string queueID = string.Empty;
+            List<Queue> queueIDs = new();
+
             foreach(var item in UseCase.queuesCreated)
             {
                 if (item.RelatedRois.Contains(RoiID))
                 {
-                    queueID = item.QueueSysID;
-        
-                    break;
+                    queueIDs.Add(item);
                 }
                 
             }
-            return queueID;
+            return queueIDs;
         }
 
-        public static void OverCapacityTest(Roi roi)
-        {
-            var queueID = GetQueueID(roi.RoiSysID);
-            int TotalPeople = 0;
-            foreach(var item in UseCase.queuesCreated.Where(p => p.QueueSysID == queueID))
+        public static void OverCapacityTest(List<Roi> rois)
+        {   
+            
+            foreach(var roi in rois)
             {
-                foreach(var obj in item.RoisCreated)
+                List<Queue> list = GetQueueID(roi.RoiSysID);
+                foreach(var x in list)
                 {
-                    TotalPeople += obj.PeopleCount;
+                    if (roi.PeopleCount > x.OverCapacityThreshold || roi.MaxDuelTime > x.DuelTimeThreshold)
+                    {
+                        
+                        System.Console.WriteLine($"fire alarm Queue:{x.QueueSysID}");
+                    }
                 }
-                if(TotalPeople > item.OverCapacityThreshold)
-                {
-                    Console.WriteLine($"Fire Alarm, QueueID:{queueID}, UseCaseID:{item.UseCaseID}, TotalPeople:{TotalPeople}, AllowedCapacity:{item.OverCapacityThreshold}");
-                    
-                }
+                
+                
             }
             
             
+               
             
         }   
 

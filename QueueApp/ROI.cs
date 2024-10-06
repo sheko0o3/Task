@@ -15,14 +15,14 @@ namespace QueueApp
 
              
     
-        public Roi(int peoplecount , [Optional]double maxdueltime, string usecaseID, string ID)
+        public Roi(int peoplecount , [Optional]double maxdueltime, string ID)
         {
             
             PeopleCount = peoplecount;
             MaxDuelTime = maxdueltime;
             // RoiSysID = Guid.NewGuid().ToString();
             RoiSysID = ID;
-            UseCaseID = usecaseID;
+            
             
 
         }
